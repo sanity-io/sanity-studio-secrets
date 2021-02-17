@@ -1,24 +1,21 @@
 import { useState, useEffect } from 'react';
 import client from 'part:@sanity/base/client';
 
-const id = 'secret.settings';
-const query = '* [_id == $id] {"secrets": @[$namespace]}[0]';
-const type = 'hidden.secrets';
+const query = '* [_id == $id][0]';
+const type = 'pluginSecrets';
 
 export function useSecrets<T>(namespace: string) {
   const [loading, setLoading] = useState<boolean>(true);
   const [secrets, setSecrets] = useState<T>();
 
-  type Doc = {
-    secrets: T;
-  };
+  const id = `secrets.${namespace}`;
 
   let subscription: any;
   useEffect(() => {
     subscription = client.observable
-      .listen(query, { id, namespace }, { visibility: 'query' })
+      .listen(query, { id }, { visibility: 'query' })
       .subscribe((result: any) => {
-        setSecrets(result.result[namespace] || {});
+        setSecrets(result.result || {});
       });
     return () => {
       subscription.unsubscribe();
@@ -28,10 +25,8 @@ export function useSecrets<T>(namespace: string) {
   useEffect(() => {
     async function fetchData() {
       client
-        .fetch(query, { id, namespace })
-        .then((doc: Doc) => {
-          setSecrets(doc.secrets);
-        })
+        .fetch(query, { id })
+        .then(setSecrets)
         .finally(() => setLoading(false));
     }
     fetchData();

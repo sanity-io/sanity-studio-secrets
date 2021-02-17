@@ -9,6 +9,7 @@ export type SettingsKey = {
 };
 
 export type SettingsViewProps = {
+  title: string;
   namespace: string;
   keys: SettingsKey[];
   onClose: () => void;
@@ -18,6 +19,7 @@ export const SettingsView = ({
   namespace,
   keys,
   onClose,
+  title = 'Configure',
 }: SettingsViewProps) => {
   const { loading, secrets, storeSecrets } = useSecrets<Record<string, any>>(
     namespace
@@ -31,7 +33,7 @@ export const SettingsView = ({
   }, [secrets]);
 
   return (
-    <Dialog id="translation-settings" onClose={onClose} header="Settings">
+    <Dialog id="translation-settings" onClose={onClose} header={title}>
       <Card padding={3}>
         <Stack space={3}>
           {keys.map(k => (
@@ -41,7 +43,7 @@ export const SettingsView = ({
               </Text>
               <TextInput
                 disabled={loading}
-                onChange={event => {
+                onChange={(event: React.FormEvent<HTMLInputElement>) => {
                   const target = event.currentTarget;
                   const { value } = target;
                   const o: Record<string, any> = { ...newSecrets };
