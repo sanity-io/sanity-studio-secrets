@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import client from 'part:@sanity/base/client';
 
-const query = '* [_id == $id][0]';
+const query = '* [_id == $id] {secrets}[0]';
 const type = 'pluginSecrets';
 
 export function useSecrets<T>(namespace: string) {
@@ -14,8 +14,8 @@ export function useSecrets<T>(namespace: string) {
   useEffect(() => {
     subscription = client.observable
       .listen(query, { id }, { visibility: 'query' })
-      .subscribe((result: any) => {
-        setSecrets(result.result || {});
+      .subscribe((result: Record<string, any>) => {
+        setSecrets(result.result.secrets || {});
       });
     return () => {
       subscription.unsubscribe();
@@ -26,7 +26,7 @@ export function useSecrets<T>(namespace: string) {
     async function fetchData() {
       client
         .fetch(query, { id })
-        .then(setSecrets)
+        .then((doc: Record<string, any>) => setSecrets(doc.secrets))
         .finally(() => setLoading(false));
     }
     fetchData();
@@ -34,9 +34,7 @@ export function useSecrets<T>(namespace: string) {
 
   const storeSecrets = (secrets: T) => {
     setLoading(true);
-    const objPatch: Record<string, any> = {};
-    objPatch[namespace] = secrets;
-    const keysPatch = client.patch(id).set(objPatch);
+    const keysPatch = client.patch(id).set({ secrets });
     client
       .transaction()
       .createIfNotExists({ _id: id, _type: type })
