@@ -10,10 +10,9 @@ import {useSecrets, SettingsView} from 'sanity-secrets'
 
 const namespace = "myPlugin"
 
-const pluginConfigKeys = [
-{
+const pluginConfigKeys = [{
   key: 'apiKey',
-  description: 'Your secret API key'
+  title: 'Your secret API key'
 }]
 
 const MyComponent = () => {
