@@ -15,7 +15,7 @@ export function useSecrets<T>(namespace: string) {
     subscription = client.observable
       .listen(query, { id }, { visibility: 'query' })
       .subscribe((result: Record<string, any>) => {
-        setSecrets(result.result.secrets || {});
+        setSecrets(result?.result?.secrets);
       });
     return () => {
       subscription.unsubscribe();
@@ -26,7 +26,7 @@ export function useSecrets<T>(namespace: string) {
     async function fetchData() {
       client
         .fetch(query, { id })
-        .then((doc: Record<string, any>) => setSecrets(doc.secrets))
+        .then((doc: Record<string, any>) => setSecrets(doc?.secrets))
         .finally(() => setLoading(false));
     }
     fetchData();
