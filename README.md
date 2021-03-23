@@ -25,14 +25,15 @@ const MyComponent = () => {
   
   return (
     {showSettings && (
-    <SettingsView
-      namespace={namespace}
-      keys={pluginConfigKeys}
-      onClose={() => {
-        setShowSettings(false)
-      }}
-    />
-  )}
+      <SettingsView
+        namespace={namespace}
+        keys={pluginConfigKeys}
+        onClose={() => {
+          setShowSettings(false)
+        }}
+      />
+    )}
+  )
 }
 ```
 
