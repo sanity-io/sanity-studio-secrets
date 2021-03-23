@@ -10,9 +10,8 @@ export function useSecrets<T>(namespace: string) {
 
   const id = `secrets.${namespace}`;
 
-  let subscription: any;
   useEffect(() => {
-    subscription = client.observable
+    let subscription = client.observable
       .listen(query, { id }, { visibility: 'query' })
       .subscribe((result: Record<string, any>) => {
         setSecrets(result?.result?.secrets);
@@ -20,7 +19,7 @@ export function useSecrets<T>(namespace: string) {
     return () => {
       subscription.unsubscribe();
     };
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     async function fetchData() {
@@ -30,7 +29,7 @@ export function useSecrets<T>(namespace: string) {
         .finally(() => setLoading(false));
     }
     fetchData();
-  }, []);
+  }, [id]);
 
   const storeSecrets = (secrets: T) => {
     setLoading(true);
