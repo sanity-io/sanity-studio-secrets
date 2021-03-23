@@ -37,7 +37,7 @@ export const SettingsView = ({
       <Card padding={3}>
         <Stack space={3}>
           {keys.map(k => (
-            <>
+            <React.Fragment key={k.key}>
               <Text as="label" weight="semibold" size={1}>
                 {k.title}
               </Text>
@@ -52,7 +52,7 @@ export const SettingsView = ({
                 }}
                 value={newSecrets[k.key]}
               ></TextInput>
-            </>
+            </React.Fragment>
           ))}
           <Button
             disabled={loading}
