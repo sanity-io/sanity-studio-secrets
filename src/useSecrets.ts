@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import client from 'part:@sanity/base/client';
+import sanityClient from 'part:@sanity/base/client';
+
+const client = sanityClient.withConfig({apiVersion: '2021-03-01'});
 
 const query = '* [_id == $id] {secrets}[0]';
 const type = 'pluginSecrets';
