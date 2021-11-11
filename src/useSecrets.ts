@@ -27,7 +27,7 @@ export function useSecrets<T>(namespace: string) {
     async function fetchData() {
       client
         .fetch(query, { id })
-        .then((doc: Record<string, any>) => setSecrets(doc?.secrets))
+        .then((doc: Record<string, any> | null) => setSecrets(doc?.secrets))
         .finally(() => setLoading(false));
     }
     fetchData();
