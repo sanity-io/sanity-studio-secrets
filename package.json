@@ -36,8 +36,16 @@
     "trailingComma": "es5"
   },
   "name": "sanity-secrets",
-  "author": "Rune Botten",
+  "author": "Sanity.io <hello@sanity.io>",
   "module": "dist/sanity-secrets.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanity-io/sanity-studio-secrets.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sanity-io/sanity-studio-secrets/issues"
+  },
+  "homepage": "https://sanity.io",
   "size-limit": [
     {
       "path": "dist/sanity-secrets.cjs.production.min.js",
