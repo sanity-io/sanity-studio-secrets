@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import sanityClient from 'part:@sanity/base/client';
 
-const client = sanityClient.withConfig({apiVersion: '2021-03-01'});
+const client = sanityClient.withConfig({ apiVersion: '2021-03-01' });
 
 const query = '* [_id == $id] {secrets}[0]';
 const type = 'pluginSecrets';
@@ -14,7 +14,7 @@ export function useSecrets<T>(namespace: string) {
 
   useEffect(() => {
     let subscription = client.observable
-      .listen(query, { id }, { visibility: 'query' })
+      .listen(query, { id }, { visibility: 'query', tag: 'secrets.listen' })
       .subscribe((result: Record<string, any>) => {
         setSecrets(result?.result?.secrets);
       });
@@ -26,7 +26,7 @@ export function useSecrets<T>(namespace: string) {
   useEffect(() => {
     async function fetchData() {
       client
-        .fetch(query, { id })
+        .fetch(query, { id }, { tag: 'secrets.get' })
         .then((doc: Record<string, any> | null) => setSecrets(doc?.secrets))
         .finally(() => setLoading(false));
     }
@@ -40,7 +40,7 @@ export function useSecrets<T>(namespace: string) {
       .transaction()
       .createIfNotExists({ _id: id, _type: type })
       .patch(keysPatch)
-      .commit()
+      .commit({ visibility: 'async', tag: 'secrets.store' })
       .finally(() => setLoading(false));
   };
 
