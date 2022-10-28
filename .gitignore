@@ -55,5 +55,5 @@ jspm_packages
 test/fixtures/init/empty
 
 # Compiled plugin
-dist
+lib
 
