@@ -1,8 +1,8 @@
-# sanity-secrets
+# @sanity/secrets
 
 > **NOTE**
 >
-> This is the **Sanity Studio v3 version** of sanity-secrets.
+> This is the **Sanity Studio v3 version** of sanity-secrets, @sanity/secrets.
 >
 > For the v2 version, please refer to the [v2-branch](https://github.com/sanity-io/sanity-secrets).
 
@@ -21,13 +21,13 @@ When native server-side secrets handling is available on the Sanity platform thi
 ## Installation
 
 ```
-npm install --save @sanity/sanity-secrets@studio-v3
+npm install --save @sanity/secrets@studio-v3
 ```
 
 or
 
 ```
-yarn add @sanity/sanity-secrets@studio-v3
+yarn add @sanity/secrets@studio-v3
 ```
 
 ## Usage
