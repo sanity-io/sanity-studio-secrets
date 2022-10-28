@@ -3,3 +3,8 @@
 node_modules
 .cache
 dist
+
+lib
+.idea
+*.iml
+.parcel-cache
