@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0-v3-studio.4](https://github.com/sanity-io/sanity-studio-secrets/compare/v2.0.0-v3-studio.3...v2.0.0-v3-studio.4) (2022-10-30)
+
+### Bug Fixes
+
+- fallback to empty value in key editor ([11a0456](https://github.com/sanity-io/sanity-studio-secrets/commit/11a0456f61b683deb8b3608cab443a50f0babbb2))
+
 ## [2.0.0-v3-studio.3](https://github.com/sanity-io/sanity-studio-secrets/compare/v2.0.0-v3-studio.2...v2.0.0-v3-studio.3) (2022-10-30)
 
 ### Bug Fixes
