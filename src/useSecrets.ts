@@ -41,7 +41,7 @@ export function useSecrets<T>(namespace: string): Secrets<T> {
 
   const storeSecrets = (updatedSecret: T) => {
     setLoading(true)
-    const keysPatch = client.patch(id).set({updatedSecret})
+    const keysPatch = client.patch(id).set({secrets: updatedSecret})
     client
       .transaction()
       .createIfNotExists({_id: id, _type: type})

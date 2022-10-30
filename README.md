@@ -36,7 +36,7 @@ Quick example of both using the secrets and putting up a dialog to let user ente
 
 ```javascript
 import {useEffect, useState} from 'react'
-import {useSecrets, SettingsView} from 'sanity-secrets'
+import {useSecrets, SettingsView} from '@sanity/secrets'
 
 const namespace = "myPlugin";
 
