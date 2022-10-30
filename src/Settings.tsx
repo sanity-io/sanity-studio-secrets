@@ -37,7 +37,7 @@ export const SettingsView = ({
       <Card padding={3}>
         <Stack space={3}>
           {keys.map((keyEntry) => (
-            <SettingsKeEntry
+            <SettingsKeyEntry
               key={keyEntry.key}
               keyEntry={keyEntry}
               loading={loading}
@@ -64,7 +64,7 @@ interface SettingsKeyProps {
   keyEntry: SettingsKey
 }
 
-function SettingsKeEntry({loading, setNewSecrets, newSecrets, keyEntry}: SettingsKeyProps) {
+function SettingsKeyEntry({loading, setNewSecrets, newSecrets, keyEntry}: SettingsKeyProps) {
   const onChange = useCallback(
     (event: React.FormEvent<HTMLInputElement>) => {
       const target = event.currentTarget
@@ -88,7 +88,7 @@ function SettingsKeEntry({loading, setNewSecrets, newSecrets, keyEntry}: Setting
           {keyEntry.description}
         </Text>
       )}
-      <TextInput disabled={loading} onChange={onChange} value={newSecrets[keyEntry.key]} />
+      <TextInput disabled={loading} onChange={onChange} value={newSecrets[keyEntry.key] ?? ''} />
     </Stack>
   )
 }
