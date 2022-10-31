@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0-v3-studio.5](https://github.com/sanity-io/sanity-studio-secrets/compare/v2.0.0-v3-studio.4...v2.0.0-v3-studio.5) (2022-10-31)
+
+### Bug Fixes
+
+- renamed package to @sanity/studio-secrets ([0a5aa16](https://github.com/sanity-io/sanity-studio-secrets/commit/0a5aa16d19ec2f3962a9b757af3c011fdcd3b3e5))
+
 ## [2.0.0-v3-studio.4](https://github.com/sanity-io/sanity-studio-secrets/compare/v2.0.0-v3-studio.3...v2.0.0-v3-studio.4) (2022-10-30)
 
 ### Bug Fixes
