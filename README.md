@@ -73,11 +73,12 @@ const MyComponent = () => {
 };
 
 ```
+
 ## License
 
 MIT-licensed. See LICENSE.
 
-## Develop & Test
+## Develop & test
 
 This plugin uses [@sanity/plugin-kit](https://github.com/sanity-io/plugin-kit)
 with default configuration for build & watch scripts.
@@ -87,8 +88,7 @@ on how to run this plugin with hotreload in the studio.
 
 ### Release new version
 
-Run ["CI & Release" workflow](https://github.com/sanity-io/sanity-secrets/actions/workflows/main.yml).
+Run ["CI & Release" workflow](https://github.com/sanity-io/sanity-studio-secrets/actions/workflows/main.yml).
 Make sure to select the main branch and check "Release new version".
 
 Semantic release will only release on configured branches, so it is safe to run release on any branch.
-
