@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0-v3-studio.8](https://github.com/sanity-io/sanity-studio-secrets/compare/v2.0.0-v3-studio.7...v2.0.0-v3-studio.8) (2022-11-04)
+
+### Bug Fixes
+
+- **deps:** pkg-utils & @sanity/plugin-kit ([5bd94d5](https://github.com/sanity-io/sanity-studio-secrets/commit/5bd94d55b9369044e7a841d6300021af2f3fa7ca))
+
 ## [2.0.0-v3-studio.7](https://github.com/sanity-io/sanity-studio-secrets/compare/v2.0.0-v3-studio.6...v2.0.0-v3-studio.7) (2022-11-03)
 
 ### Bug Fixes
