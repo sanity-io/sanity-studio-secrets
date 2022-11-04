@@ -2,15 +2,16 @@
   "name": "@sanity/studio-secrets",
   "version": "2.0.0-v3-studio.7",
   "description": "React hooks and UI for reading and managing secrets in a Sanity Studio. This is a good pattern for keeping configuration secret. Instead of using environment variables which would be bundled with the Studio source (it is an SPA), we store secret information in a document in the dataset. This document will not be readable to externals even in a public dataset. With custom access controls you can also specify which users can read the configuration in your Studio.",
-  "author": "Sanity.io <hello@sanity.io>",
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
+  "homepage": "https://github.com/sanity-io/sanity-studio-secrets#readme",
+  "bugs": {
+    "url": "https://github.com/sanity-io/sanity-studio-secrets/issues"
   },
-  "source": "./src/index.ts",
-  "main": "./lib/index.js",
-  "module": "./lib/index.esm.js",
-  "types": "./lib/src/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sanity-io/sanity-studio-secrets.git"
+  },
+  "license": "MIT",
+  "author": "Sanity.io <hello@sanity.io>",
   "exports": {
     ".": {
       "types": "./lib/src/index.d.ts",
@@ -18,8 +19,13 @@
       "import": "./lib/index.esm.js",
       "require": "./lib/index.js",
       "default": "./lib/index.esm.js"
-    }
+    },
+    "./package.json": "./package.json"
   },
+  "main": "./lib/index.js",
+  "module": "./lib/index.esm.js",
+  "source": "./src/index.ts",
+  "types": "./lib/src/index.d.ts",
   "files": [
     "src",
     "lib",
@@ -27,42 +33,28 @@
     "sanity.json"
   ],
   "scripts": {
-    "build": "pkg-utils build",
-    "test": "echo 'no tests'",
+    "prebuild": "npm run clean && plugin-kit verify-package --silent && pkg-utils",
+    "build": "pkg-utils build --strict",
+    "clean": "rimraf lib",
+    "link-watch": "plugin-kit link-watch",
     "lint": "eslint .",
     "prepare": "husky install",
-    "clean": "rimraf lib",
-    "prebuild": "npm run clean && plugin-kit verify-package --silent && pkg-utils",
-    "watch": "pkg-utils watch",
-    "link-watch": "plugin-kit link-watch",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "test": "echo 'no tests'",
+    "watch": "pkg-utils watch"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:sanity-io/sanity-studio-secrets.git"
+  "dependencies": {
+    "@sanity/incompatible-plugin": "^1.0.4"
   },
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "peerDependencies": {
-    "@sanity/ui": "^1.0.0-beta.31",
-    "react": "^18.0.0",
-    "sanity": "dev-preview || 3.0.0-rc.0",
-    "styled-components": "^5.3.0"
-  },
-  "bugs": {
-    "url": "https://github.com/sanity-io/sanity-studio-secrets/issues"
-  },
-  "homepage": "https://github.com/sanity-io/sanity-studio-secrets#readme",
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
     "@commitlint/config-conventional": "^17.2.0",
     "@sanity/client": "^3.2.0",
-    "@sanity/pkg-utils": "^1.16.2",
-    "@sanity/plugin-kit": "^2.0.7",
+    "@sanity/pkg-utils": "^1.17.2",
+    "@sanity/plugin-kit": "^2.1.6",
     "@sanity/semantic-release-preset": "^2.0.2",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
     "eslint": "^8.26.0",
@@ -74,13 +66,23 @@
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "prettier-plugin-packagejson": "^2.3.0",
+    "react": "^18",
+    "react-dom": "^18",
     "rimraf": "^3.0.2",
-    "sanity": "dev-preview || 3.0.0-rc.0",
+    "sanity": "3.0.0-rc.0",
     "typescript": "^4.8.4"
   },
-  "dependencies": {
-    "@sanity/incompatible-plugin": "^1.0.4"
+  "peerDependencies": {
+    "@sanity/ui": "1.0.0-beta.32",
+    "react": "^18",
+    "sanity": "dev-preview || 3.0.0-rc.0",
+    "styled-components": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
