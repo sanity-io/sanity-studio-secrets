@@ -70,13 +70,13 @@
     "react": "^18",
     "react-dom": "^18",
     "rimraf": "^3.0.2",
-    "sanity": "3.0.0-rc.0",
+    "sanity": "3.0.0-rc.2",
     "typescript": "^4.8.4"
   },
   "peerDependencies": {
     "@sanity/ui": "1.0.0-beta.32",
     "react": "^18",
-    "sanity": "dev-preview || 3.0.0-rc.0",
+    "sanity": "dev-preview || 3.0.0-rc.2",
     "styled-components": "^5.3.0"
   },
   "engines": {
