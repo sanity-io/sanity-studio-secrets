@@ -1,72 +1,88 @@
 {
-  "version": "0.1.0",
-  "license": "MIT",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "src"
-  ],
-  "engines": {
-    "node": ">=10"
-  },
-  "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
-    "test": "tsdx test --passWithNoTests",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build",
-    "size": "size-limit",
-    "analyze": "size-limit --why"
-  },
-  "peerDependencies": {
-    "@sanity/ui": "^0.36.12",
-    "react": ">=16",
-    "styled-components": "^5.3.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
-  },
-  "prettier": {
-    "printWidth": 80,
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "es5"
-  },
-  "name": "sanity-secrets",
-  "author": "Sanity.io <hello@sanity.io>",
-  "module": "dist/sanity-secrets.esm.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sanity-io/sanity-studio-secrets.git"
-  },
+  "name": "@sanity/studio-secrets",
+  "version": "2.0.0-v3-studio.8",
+  "description": "React hooks and UI for reading and managing secrets in a Sanity Studio. This is a good pattern for keeping configuration secret. Instead of using environment variables which would be bundled with the Studio source (it is an SPA), we store secret information in a document in the dataset. This document will not be readable to externals even in a public dataset. With custom access controls you can also specify which users can read the configuration in your Studio.",
+  "homepage": "https://github.com/sanity-io/sanity-studio-secrets#readme",
   "bugs": {
     "url": "https://github.com/sanity-io/sanity-studio-secrets/issues"
   },
-  "homepage": "https://sanity.io",
-  "size-limit": [
-    {
-      "path": "dist/sanity-secrets.cjs.production.min.js",
-      "limit": "10 KB"
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sanity-io/sanity-studio-secrets.git"
+  },
+  "license": "MIT",
+  "author": "Sanity.io <hello@sanity.io>",
+  "exports": {
+    ".": {
+      "types": "./lib/src/index.d.ts",
+      "source": "./src/index.ts",
+      "import": "./lib/index.esm.js",
+      "require": "./lib/index.js",
+      "default": "./lib/index.esm.js"
     },
-    {
-      "path": "dist/sanity-secrets.esm.js",
-      "limit": "10 KB"
-    }
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/index.js",
+  "module": "./lib/index.esm.js",
+  "source": "./src/index.ts",
+  "types": "./lib/src/index.d.ts",
+  "files": [
+    "src",
+    "lib",
+    "v2-incompatible.js",
+    "sanity.json"
   ],
+  "scripts": {
+    "prebuild": "npm run clean && plugin-kit verify-package --silent && pkg-utils",
+    "build": "pkg-utils build --strict",
+    "clean": "rimraf lib",
+    "link-watch": "plugin-kit link-watch",
+    "lint": "eslint .",
+    "prepare": "husky install",
+    "prepublishOnly": "npm run build",
+    "test": "echo 'no tests'",
+    "watch": "pkg-utils watch"
+  },
+  "dependencies": {
+    "@sanity/incompatible-plugin": "^1.0.4"
+  },
   "devDependencies": {
+    "@commitlint/cli": "^17.2.0",
+    "@commitlint/config-conventional": "^17.2.0",
     "@sanity/client": "^3.2.0",
-    "@size-limit/preset-small-lib": "^4.9.2",
-    "@types/react": "^17.0.2",
-    "@types/react-dom": "^17.0.1",
-    "husky": "^5.0.9",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "size-limit": "^4.9.2",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.1.0",
-    "typescript": "^4.1.5"
+    "@sanity/pkg-utils": "^1.17.2",
+    "@sanity/plugin-kit": "^2.1.6",
+    "@sanity/semantic-release-preset": "^2.0.2",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-sanity": "^6.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "prettier-plugin-packagejson": "^2.3.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "rimraf": "^3.0.2",
+    "sanity": "3.0.0-rc.2",
+    "typescript": "^4.8.4"
+  },
+  "peerDependencies": {
+    "@sanity/ui": "1.0.0-beta.32",
+    "react": "^18",
+    "sanity": "dev-preview || 3.0.0-rc.2",
+    "styled-components": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
