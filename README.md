@@ -18,13 +18,13 @@ When native server-side secrets handling is available on the Sanity platform thi
 ## Installation
 
 ```
-npm install --save @sanity/studio-secrets@studio-v3
+npm install --save @sanity/studio-secrets
 ```
 
 or
 
 ```
-yarn add @sanity/studio-secrets@studio-v3
+yarn add @sanity/studio-secrets
 ```
 
 ## Usage
