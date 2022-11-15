@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/sanity-io/sanity-studio-secrets/compare/v2.0.0...v2.0.1) (2022-11-15)
+
+### Bug Fixes
+
+- **docs:** removed tag from install command ([e0ad28e](https://github.com/sanity-io/sanity-studio-secrets/commit/e0ad28e200fd10dcb142b36a0abaf42447b5e0c1))
+
 ## [2.0.0](https://github.com/sanity-io/sanity-studio-secrets/compare/v1.0.0...v2.0.0) (2022-11-15)
 
 ### ⚠ BREAKING CHANGES
