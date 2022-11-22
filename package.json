@@ -1,28 +1,31 @@
 {
+  "name": "sanity-secrets",
   "version": "0.1.0",
+  "homepage": "https://sanity.io",
+  "bugs": {
+    "url": "https://github.com/sanity-io/sanity-studio-secrets/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sanity-io/sanity-studio-secrets.git"
+  },
   "license": "MIT",
+  "author": "Sanity.io <hello@sanity.io>",
   "main": "dist/index.js",
+  "module": "dist/sanity-secrets.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
     "src"
   ],
-  "engines": {
-    "node": ">=10"
-  },
   "scripts": {
-    "start": "tsdx watch",
+    "analyze": "size-limit --why",
     "build": "tsdx build",
-    "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
-    "analyze": "size-limit --why"
-  },
-  "peerDependencies": {
-    "@sanity/ui": "^0.36.12",
-    "react": ">=16",
-    "styled-components": "^5.3.0"
+    "start": "tsdx watch",
+    "test": "tsdx test --passWithNoTests"
   },
   "husky": {
     "hooks": {
@@ -35,29 +38,10 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "sanity-secrets",
-  "author": "Sanity.io <hello@sanity.io>",
-  "module": "dist/sanity-secrets.esm.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sanity-io/sanity-studio-secrets.git"
-  },
-  "bugs": {
-    "url": "https://github.com/sanity-io/sanity-studio-secrets/issues"
-  },
-  "homepage": "https://sanity.io",
-  "size-limit": [
-    {
-      "path": "dist/sanity-secrets.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/sanity-secrets.esm.js",
-      "limit": "10 KB"
-    }
-  ],
   "devDependencies": {
     "@sanity/client": "^3.2.0",
+    "@sanity/semantic-release-preset": "^2.0.2",
+    "@sanity/ui": "^0.36.12",
     "@size-limit/preset-small-lib": "^4.9.2",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
@@ -68,5 +52,23 @@
     "tsdx": "^0.14.1",
     "tslib": "^2.1.0",
     "typescript": "^4.1.5"
-  }
+  },
+  "peerDependencies": {
+    "@sanity/ui": "^0.36.12",
+    "react": ">=16",
+    "styled-components": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "size-limit": [
+    {
+      "path": "dist/sanity-secrets.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/sanity-secrets.esm.js",
+      "limit": "10 KB"
+    }
+  ]
 }
