@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/sanity-io/sanity-studio-secrets/compare/v2.0.1...v2.0.2) (2022-11-25)
+
+### Bug Fixes
+
+- **deps:** sanity ^3.0.0 (rc.3 compatible) ([f332be9](https://github.com/sanity-io/sanity-studio-secrets/commit/f332be965b008a9a8872666f6f89585d73fcad44))
+
 ## [2.0.1](https://github.com/sanity-io/sanity-studio-secrets/compare/v2.0.0...v2.0.1) (2022-11-15)
 
 ### Bug Fixes
