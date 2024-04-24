@@ -37,22 +37,16 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
-jobs:
-  log-the-inputs:
-    name: Log inputs
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          echo "Inputs: $INPUTS"
-        env:
-          INPUTS: ${{ toJSON(inputs) }}
+permissions:
+  contents: read # for checkout
 
+jobs:
   build:
     runs-on: ubuntu-latest
     name: Lint & Build
     steps:
-      - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3
-      - uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # tag=v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           cache: npm
           node-version: lts/*
@@ -91,8 +85,8 @@ jobs:
         run: |
           git config --global core.autocrlf false
           git config --global core.eol lf
-      - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3
-      - uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # tag=v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           cache: npm
           node-version: ${{ matrix.node }}
@@ -106,12 +100,12 @@ jobs:
     runs-on: ubuntu-latest
     name: Semantic release
     steps:
-      - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3
+      - uses: actions/checkout@v4
         with:
           # Need to fetch entire commit history to
           # analyze every commit since last release
           fetch-depth: 0
-      - uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # tag=v3
+      - uses: actions/setup-node@v4
         with:
           cache: npm
           node-version: lts/*
@@ -122,11 +116,13 @@ jobs:
         # e.g. git tags were pushed but it exited before `npm publish`
         if: always()
         env:
+          NPM_CONFIG_PROVENANCE: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
         # Re-run semantic release with rich logs if it failed to publish for easier debugging
       - run: npx semantic-release --dry-run --debug
         if: failure()
         env:
+          NPM_CONFIG_PROVENANCE: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
