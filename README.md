@@ -7,8 +7,8 @@ React hooks and UI for reading and managing secrets in a Sanity Studio. This is 
 
 ## Caveat
 
-This plugin stores secrets as fields on a document in your dataset. 
-Even though that document is not accessible without having the correct permissions 
+This plugin stores secrets as fields on a document in your dataset.
+Even though that document is not accessible without having the correct permissions
 (logged in user with read access) it will be included in any export your may do of your dataset and this is important to be aware of.
 
 ## Future deprecation
@@ -35,40 +35,39 @@ Quick example of both using the secrets and putting up a dialog to let user ente
 import {useEffect, useState} from 'react'
 import {useSecrets, SettingsView} from '@sanity/studio-secrets'
 
-const namespace = "myPlugin";
+const namespace = 'myPlugin'
 
 const pluginConfigKeys = [
   {
-    key: "apiKey",
-    title: "Your secret API key",
+    key: 'apiKey',
+    title: 'Your secret API key',
   },
-];
+]
 
 const MyComponent = () => {
-  const { secrets } = useSecrets(namespace);
-  const [showSettings, setShowSettings] = useState(false);
+  const {secrets} = useSecrets(namespace)
+  const [showSettings, setShowSettings] = useState(false)
 
   useEffect(() => {
     if (!secrets) {
-      setShowSettings(true);
+      setShowSettings(true)
     }
-  }, [secrets]);
+  }, [secrets])
 
   if (!showSettings) {
-    return null;
+    return null
   }
   return (
     <SettingsView
-      title={"sdfds"}
+      title={'sdfds'}
       namespace={namespace}
       keys={pluginConfigKeys}
       onClose={() => {
-        setShowSettings(false);
+        setShowSettings(false)
       }}
     />
-  );
-};
-
+  )
+}
 ```
 
 ## License

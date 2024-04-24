@@ -1,6 +1,6 @@
 {
   "name": "@sanity/studio-secrets",
-  "version": "2.0.2",
+  "version": "3.0.0-canary.0",
   "description": "React hooks and UI for reading and managing secrets in a Sanity Studio. This is a good pattern for keeping configuration secret. Instead of using environment variables which would be bundled with the Studio source (it is an SPA), we store secret information in a document in the dataset. This document will not be readable to externals even in a public dataset. With custom access controls you can also specify which users can read the configuration in your Studio.",
   "homepage": "https://github.com/sanity-io/sanity-studio-secrets#readme",
   "bugs": {
@@ -12,20 +12,18 @@
   },
   "license": "MIT",
   "author": "Sanity.io <hello@sanity.io>",
+  "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./lib/src/index.d.ts",
       "source": "./src/index.ts",
-      "import": "./lib/index.esm.js",
-      "require": "./lib/index.js",
-      "default": "./lib/index.esm.js"
+      "import": "./lib/index.mjs",
+      "default": "./lib/index.js"
     },
     "./package.json": "./package.json"
   },
   "main": "./lib/index.js",
   "module": "./lib/index.esm.js",
-  "source": "./src/index.ts",
-  "types": "./lib/src/index.d.ts",
+  "types": "./lib/index.d.ts",
   "files": [
     "src",
     "lib",
@@ -33,54 +31,54 @@
     "sanity.json"
   ],
   "scripts": {
-    "prebuild": "npm run clean && plugin-kit verify-package --silent && pkg-utils",
-    "build": "pkg-utils build --strict",
-    "clean": "rimraf lib",
+    "build": "plugin-kit verify-package --silent && pkg-utils build --strict --check --clean",
     "link-watch": "plugin-kit link-watch",
     "lint": "eslint .",
     "prepare": "husky install",
     "prepublishOnly": "npm run build",
     "test": "echo 'no tests'",
-    "watch": "pkg-utils watch"
+    "watch": "pkg-utils watch --strict"
   },
+  "browserslist": "extends @sanity/browserslist-config",
+  "prettier": "@sanity/prettier-config",
   "dependencies": {
     "@sanity/incompatible-plugin": "^1.0.4",
-    "@sanity/ui": "^1.0.0"
+    "@sanity/ui": "^2.1.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.2.0",
-    "@commitlint/config-conventional": "^17.2.0",
-    "@sanity/client": "^3.2.0",
-    "@sanity/pkg-utils": "^1.17.2",
-    "@sanity/plugin-kit": "^2.1.6",
-    "@sanity/semantic-release-preset": "^2.0.2",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "@typescript-eslint/eslint-plugin": "^5.42.0",
-    "@typescript-eslint/parser": "^5.42.0",
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@sanity/client": "^6.15.20",
+    "@sanity/pkg-utils": "6.8.4",
+    "@sanity/plugin-kit": "^4.0.6",
+    "@sanity/prettier-config": "1.0.2",
+    "@sanity/semantic-release-preset": "^4.1.7",
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.2.25",
+    "@typescript-eslint/eslint-plugin": "^7.7.1",
+    "@typescript-eslint/parser": "^7.7.1",
     "eslint": "^8.26.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-config-sanity": "^6.0.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.31.10",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-sanity": "^7.1.2",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1",
-    "prettier-plugin-packagejson": "^2.3.0",
-    "react": "^18",
-    "react-dom": "^18",
-    "rimraf": "^3.0.2",
-    "sanity": "^3.0.0",
-    "typescript": "^4.8.4"
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sanity": "^3.39.0",
+    "semantic-release": "^23.0.8",
+    "typescript": "5.4.5"
   },
   "peerDependencies": {
-    "react": "^18",
-    "sanity": "^3.0.0",
-    "styled-components": "^5.3.0"
+    "react": "^18.2.0",
+    "sanity": "^3.36.4",
+    "styled-components": "^6.1"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
   "publishConfig": {
     "access": "public"

@@ -5,10 +5,18 @@
     "browser": true
   },
   "extends": [
-    "sanity",
     "sanity/typescript",
     "sanity/react",
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended"
+  ],
+  "overrides": [
+    {
+      "files": ["*.{ts,tsx}"],
+      "rules": {
+        "no-undef": 0,
+        "dot-notation": 0
+      }
+    }
   ]
 }

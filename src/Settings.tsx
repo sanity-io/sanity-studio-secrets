@@ -1,5 +1,6 @@
-import React, {Dispatch, SetStateAction, useCallback, useEffect} from 'react'
-import {Dialog, Card, Stack, Text, TextInput, Button} from '@sanity/ui'
+import {Button, Card, Dialog, Stack, Text, TextInput} from '@sanity/ui'
+import {type Dispatch, type SetStateAction, useCallback, useEffect, useState} from 'react'
+
 import {useSecrets} from './useSecrets'
 
 export type SettingsKey = {
@@ -20,9 +21,11 @@ export const SettingsView = ({
   keys,
   onClose,
   title = 'Configure',
-}: SettingsViewProps) => {
+}: SettingsViewProps): JSX.Element => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const {loading, secrets, storeSecrets} = useSecrets<Record<string, any>>(namespace)
-  const [newSecrets, setNewSecrets] = React.useState<Record<string, any>>({})
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [newSecrets, setNewSecrets] = useState<Record<string, any>>({})
 
   useEffect(() => {
     if (secrets) {
@@ -33,7 +36,7 @@ export const SettingsView = ({
   const onClick = useCallback(() => storeSecrets(newSecrets), [storeSecrets, newSecrets])
 
   return (
-    <Dialog id="translation-settings" onClose={onClose} header={title}>
+    <Dialog animate id="translation-settings" onClose={onClose} header={title}>
       <Card padding={3}>
         <Stack space={3}>
           {keys.map((keyEntry) => (
@@ -59,7 +62,9 @@ export const SettingsView = ({
 
 interface SettingsKeyProps {
   loading: boolean
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   newSecrets: Record<string, any>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setNewSecrets: Dispatch<SetStateAction<Record<string, any>>>
   keyEntry: SettingsKey
 }
@@ -75,7 +80,7 @@ function SettingsKeyEntry({loading, setNewSecrets, newSecrets, keyEntry}: Settin
         return newState
       })
     },
-    [keyEntry, setNewSecrets]
+    [keyEntry, setNewSecrets],
   )
 
   return (
