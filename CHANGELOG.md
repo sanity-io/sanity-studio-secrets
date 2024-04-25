@@ -5,6 +5,16 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.0](https://github.com/sanity-io/sanity-studio-secrets/compare/v2.0.2...v3.0.0) (2024-04-25)
+
+### ⚠ BREAKING CHANGES
+
+- support `@sanity/ui` v2, and ship modern ESM (#16)
+
+### Features
+
+- support `@sanity/ui` v2, and ship modern ESM ([#16](https://github.com/sanity-io/sanity-studio-secrets/issues/16)) ([cc7d60a](https://github.com/sanity-io/sanity-studio-secrets/commit/cc7d60abc959cc46d18d0e1b8cbddb3bf22e776e))
+
 ## [2.0.2](https://github.com/sanity-io/sanity-studio-secrets/compare/v2.0.1...v2.0.2) (2022-11-25)
 
 ### Bug Fixes
