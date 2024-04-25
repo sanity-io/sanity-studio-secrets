@@ -1,4 +1,4 @@
+import {SettingsView, type SettingsViewProps} from './Settings'
 import {useSecrets} from './useSecrets'
-import {SettingsView, SettingsViewProps} from './Settings'
 
-export {useSecrets, SettingsView, type SettingsViewProps}
+export {SettingsView, type SettingsViewProps, useSecrets}

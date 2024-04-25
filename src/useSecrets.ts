@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import {useClient} from 'sanity'
 
 const query = '* [_id == $id] {secrets}[0]'
@@ -21,8 +21,9 @@ export function useSecrets<T>(namespace: string): Secrets<T> {
   useEffect(() => {
     const subscription = client.observable
       .listen(query, {id}, {visibility: 'query', tag: 'secrets.listen'})
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .subscribe((result: Record<string, any>) => {
-        setSecrets(result?.result?.secrets)
+        setSecrets(result?.['result']?.secrets)
       })
     return () => {
       subscription.unsubscribe()
@@ -33,7 +34,8 @@ export function useSecrets<T>(namespace: string): Secrets<T> {
     async function fetchData() {
       client
         .fetch(query, {id}, {tag: 'secrets.get'})
-        .then((doc: Record<string, any> | null) => setSecrets(doc?.secrets))
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .then((doc: Record<string, any> | null) => setSecrets(doc?.['secrets']))
         .finally(() => setLoading(false))
     }
     fetchData()
