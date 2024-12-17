@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/sanity-io/sanity-studio-secrets/compare/v3.0.0...v3.0.1) (2024-12-17)
+
+### Bug Fixes
+
+- support react 19 ([#21](https://github.com/sanity-io/sanity-studio-secrets/issues/21)) ([acd1406](https://github.com/sanity-io/sanity-studio-secrets/commit/acd1406664d6ae760c207f3c85ff555db16a78ae))
+
 ## [3.0.0](https://github.com/sanity-io/sanity-studio-secrets/compare/v2.0.2...v3.0.0) (2024-04-25)
 
 ### ⚠ BREAKING CHANGES
