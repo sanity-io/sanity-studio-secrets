@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.2](https://github.com/sanity-io/sanity-studio-secrets/compare/v3.0.1...v3.0.2) (2025-07-10)
+
+### Bug Fixes
+
+- **deps:** allow studio v4 in peer dep ranges ([#22](https://github.com/sanity-io/sanity-studio-secrets/issues/22)) ([185ec8b](https://github.com/sanity-io/sanity-studio-secrets/commit/185ec8bb5604abb49b91661b620fe073ffe55b36))
+
 ## [3.0.1](https://github.com/sanity-io/sanity-studio-secrets/compare/v3.0.0...v3.0.1) (2024-12-17)
 
 ### Bug Fixes
