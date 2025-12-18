@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.3](https://github.com/sanity-io/sanity-studio-secrets/compare/v3.0.2...v3.0.3) (2025-12-18)
+
+### Bug Fixes
+
+- **deps:** make peer dependencies include sanity 5.x ([#23](https://github.com/sanity-io/sanity-studio-secrets/issues/23)) ([24060cc](https://github.com/sanity-io/sanity-studio-secrets/commit/24060cc27fb5de5fea62e925f6ce7b2b6a3b2353))
+
 ## [3.0.2](https://github.com/sanity-io/sanity-studio-secrets/compare/v3.0.1...v3.0.2) (2025-07-10)
 
 ### Bug Fixes
