@@ -1,6 +1,7 @@
 {
   "extends": "@sanity/pkg-utils/tsconfig/strict.json",
   "include": ["src/**/*"],
+  "exclude": ["src/__tests__/**/*"],
   "compilerOptions": {
     "rootDir": ".",
     "outDir": "./lib"
